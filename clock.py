@@ -3,11 +3,11 @@ from tkinter import *
 from tkinter import messagebox
 from time import strftime
 from time import sleep
-# import pyglet
-# from playsound import playsound
+#import pyglet
+#from playsound import playsound
 
 # pyglet.font.add_file('DS-DIGIB.TTF')
-# pyglet.font.add_file('digital-7 (mono).ttf')
+#pyglet.font.add_file('digital-7 (mono).ttf')
 
 root = Tk()
 root.title('Digital Clock')
@@ -15,9 +15,9 @@ root.geometry('680x415+100+100')
 root.config(bg='Black')
 root.iconbitmap('pixmeadefavicon.ico')
 label = Label(root, text="DIGITAL CLOCK",
-              font=('Digital-7 Mono', '15',),
-              background='Black',
-              foreground='#50C9C3').place(x=80, y=42)
+                font=('Digital-7 Mono', '15',),
+                background='Black',
+                foreground='#50C9C3').place(x=80, y=42)
 
 
 def alarm():
@@ -39,46 +39,46 @@ def alarm():
                 pass
 
     lbl_alarm = Label(newWindow, text='ALARM', font=('DS-Digital', '45', 'bold'), background='#16222A',
-                      foreground='#50C9C3', anchor='center')
+                        foreground='#50C9C3', anchor='center')
     lbl_alarm.place(x=50, y=50, height=70, width=330)
     lbl_notice = Label(newWindow, text='Enter "HOUR" in 24hr format', font=('DS-Digital', '15',),
-                       background='#16222A', foreground='#f64f59', anchor='center')
+                        background='#16222A', foreground='#f64f59', anchor='center')
     lbl_notice.place(x=50, y=130, height=45, width=330)
     lbl_alhour = Label(newWindow, text='Hour ---->', font=('DS-Digital', '15',),
-                       background='#16222A', foreground='#50C9C3', anchor='center')
+                        background='#16222A', foreground='#50C9C3', anchor='center')
     lbl_alhour.place(x=50, y=185, height=30, width=270)
     lbl_almin = Label(newWindow, text='Minute --->', font=('DS-Digital', '15',),
-                      background='#16222A', foreground='#50C9C3', anchor='center')
+                        background='#16222A', foreground='#50C9C3', anchor='center')
     lbl_almin.place(x=50, y=225, height=30, width=270)
 
     c21 = Canvas(newWindow, bg="#16222A", height="10",
-                 width='350', highlightthickness=0)
+                    width='350', highlightthickness=0)
     c21.place(x=40, y=30)
     c22 = Canvas(newWindow, bg="#16222A", height="10",
-                 width='350', highlightthickness=0)
+                    width='350', highlightthickness=0)
     c22.place(x=40, y=345)
     c23 = Canvas(newWindow, bg="#16222A", height="325",
-                 width='10', highlightthickness=0)
+                    width='10', highlightthickness=0)
     c23.place(x=30, y=30)
     c24 = Canvas(newWindow, bg="#16222A", height="325",
-                 width='10', highlightthickness=0)
+                    width='10', highlightthickness=0)
     c24.place(x=390, y=30)
 
     inputh = Entry(newWindow, relief=SUNKEN, bd='0', font=('Digital-7 Mono', '15',),
-                   bg='#16222A', fg='#50C9C3', highlightthickness='0')
+                    bg='#16222A', fg='#50C9C3', highlightthickness='0')
     inputh.place(x=330, y=185, width=50, height=30)
     inputm = Entry(newWindow, relief=SUNKEN, bd='0', font=('Digital-7 Mono', '15',),
-                   bg='#16222A', fg='#50C9C3', highlightthickness='0')
+                    bg='#16222A', fg='#50C9C3', highlightthickness='0')
     inputm.place(x=330, y=225, width=50, height=30)
 
     bset_al = Button(newWindow, text='SET ALARM', relief=GROOVE, activebackground='#f64f59',
-                     activeforeground='#16222A', bd='0', font=('Digital-7 Mono', '15',),
-                     bg='#16222A', fg='#f64f59', highlightthickness='0', command=setalarm)
+                        activeforeground='#16222A', bd='0', font=('Digital-7 Mono', '15',),
+                        bg='#16222A', fg='#f64f59', highlightthickness='0', command=setalarm)
     bset_al.place(x=50, y=265, height=30, width=330)
 
     bcancel = Button(newWindow, text='CANCEL', relief=GROOVE, activebackground='#f64f59',
-                     activeforeground='#16222A', bd='0', font=('Digital-7 Mono', '15',),
-                     bg='#16222A', fg='#f64f59', highlightthickness='0', command=newWindow.destroy)
+                        activeforeground='#16222A', bd='0', font=('Digital-7 Mono', '15',),
+                        bg='#16222A', fg='#f64f59', highlightthickness='0', command=newWindow.destroy)
     bcancel.place(x=50, y=305, height=30, width=330)
 
 
@@ -86,7 +86,25 @@ def voltest():
     playsound('0451.wav', block=False)
 
 
-def indicator_update():
+def time_show():
+    hour = strftime('%I:')
+    mins = strftime('%M')
+    sec = strftime('%S')
+    day = strftime('%A')
+    fulldate = strftime('%d-%b-%G')
+
+    if int(strftime('%H')) >= 12:
+        ampmholder = 'PM'
+    else:
+        ampmholder = 'AM'
+
+    lbl_hour.config(text=hour)
+    lbl_min.config(text=mins)
+    lbl_sec.config(text=sec)
+    lbl_ampm.config(text=ampmholder)
+    lbl_fulldate.config(text=fulldate)
+    lbl_day.config(text=day)
+
     if int(strftime('%S')) % 2 == 1:
         indicator2.config(bg="Black")
         indicator1.config(bg="#50C9C3")
@@ -165,34 +183,12 @@ def indicator_update():
         c5.itemconfig(in39, fill="#f64f59")
         c5.itemconfig(in40, fill="#50C9C3")
 
-
-def time_show():
-    hour = strftime('%I:')
-    mins = strftime('%M')
-    sec = strftime('%S')
-    day = strftime('%A')
-    fulldate = strftime('%d-%b-%G')
-
-    if int(strftime('%H')) >= 12:
-        ampmholder = 'PM'
-    else:
-        ampmholder = 'AM'
-
-    lbl_hour.config(text=hour)
-    lbl_min.config(text=mins)
-    lbl_sec.config(text=sec)
-    lbl_ampm.config(text=ampmholder)
-    lbl_fulldate.config(text=fulldate)
-    lbl_day.config(text=day)
-
-    indicator_update()
-
     lbl_hour.after(1000, time_show)
 
 
 # Labels
 lbl_hour = Label(root, font=('DS-Digital', '120', 'bold'), background='#16222A',
-                 foreground='#50C9C3', anchor='e')
+                    foreground='#50C9C3', anchor='e')
 lbl_hour.place(x=80, y=75, height=200, width=200)
 
 lbl_min = Label(root, font=('DS-Digital', '120', 'bold'), background='#16222A',
@@ -204,11 +200,11 @@ lbl_sec = Label(root, font=('DS-Digital', '45', 'bold'), background='#16222A',
 lbl_sec.place(x=500, y=175, height=100, width=100)
 
 lbl_ampm = Label(root, font=('DS-Digital', '45', 'bold'), background='#16222A',
-                 foreground='#50C9C3', anchor='center')
+                    foreground='#50C9C3', anchor='center')
 lbl_ampm.place(x=500, y=75, height=90, width=100)
 
 lbl_fulldate = Label(root, font=('DS-Digital', '20', 'bold'), background='#16222A',
-                     foreground='#50C9C3', anchor='center')
+                        foreground='#50C9C3', anchor='center')
 lbl_fulldate.place(x=290, y=285, height=30, width=200)
 
 lbl_day = Label(root, font=('DS-Digital', '20', 'bold'), background='#16222A',
@@ -216,7 +212,7 @@ lbl_day = Label(root, font=('DS-Digital', '20', 'bold'), background='#16222A',
 lbl_day.place(x=80, y=285, height=30, width=200)
 
 lbl_12hrc = Label(root, text="12 HOUR", font=('Digital-7 Mono', '15',),
-                  background='Black', foreground='#50C9C3').place(x=534, y=40)
+                    background='Black', foreground='#50C9C3').place(x=534, y=40)
 
 # boundries
 c1 = Canvas(root, bg="#16222A", height="10", width='540', highlightthickness=0)
@@ -235,8 +231,8 @@ balarm = Button(root, text='ALARM', relief=GROOVE, activebackground='#f64f59',
 balarm.place(x=80, y=325, height=30, width=200)
 
 bvoltest = Button(root, text='Volume Test', relief=GROOVE, activebackground='#f64f59',
-                  activeforeground='#16222A', bd='0', command=voltest,
-                  font=('Digital-7 Mono', '15',), bg='#16222A', fg='#f64f59', highlightthickness='0')
+                    activeforeground='#16222A', bd='0', command=voltest,
+                    font=('Digital-7 Mono', '15',), bg='#16222A', fg='#f64f59', highlightthickness='0')
 bvoltest.place(x=290, y=325, height=30, width=200)
 
 bclose = Button(root, text='CLOSE', relief=GROOVE, activebackground='#f64f59',
