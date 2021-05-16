@@ -7,16 +7,6 @@ from time import sleep
 #from playsound import playsound
 
 # pyglet.font.add_file('DS-DIGIB.TTF')
-
-
-
-
-
-
-
-
-
-
 #pyglet.font.add_file('digital-7 (mono).ttf')
 
 root = Tk()
