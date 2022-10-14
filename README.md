@@ -1,12 +1,12 @@
 # MetroDigitalClock
 a Digital Clock made using Python tkinter.
 
-This is ported from a windows env to a Mac. sounds, fonts are not working as expected. 
+- Created on a Windows machine. Therefore button styling, sounds may not work on a other OSs.
 
-Fonts used; Digital-7 (Mono).ttf, DS-DIGIB.ttf
+- Fonts used; Digital-7 (Mono).ttf, DS-DIGIB.ttf
 
 
-## Preview (on a Windows box)
+## Preview (on a Windows machine)
 
 ### Main Clock Interface
 ![clock](https://user-images.githubusercontent.com/70215958/195935893-87842dba-f570-4fd5-a0e6-47eaaa0534d8.gif)
